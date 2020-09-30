@@ -1,28 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cavedweller;
 
 /**
  *
- * @author jword
+ * @author Musaab Abbas
  */
 public class Cave {
-    private double temp;
-    private int size;
-    private Caveman caveman;
-    private Bat bat;
-    private Key key;
-    private Food food1;
-    private Door door;
+    int size;
+    Caveman caveman;
+    Food food1;
+    Food food2;
     
-    public Cave() {
-        this.temp = Math.random() * 100;
-        this.size = (int) (Math.random() * 11) + 6;
+    public Cave () {
+        this.size = (int) (Math.random()*9) + 8;
         //instantiate
-        this.caveman = new Caveman("Grog",(int)(Math.random() * this.size),(int)(Math.random() * this.size));
+        this.caveman = new Caveman("Unga",(int) (Math.random()*size), (int) (Math.random()*size));
+        this.food1 = new Food("Food",(int) (Math.random()*size), (int) (Math.random()*size));
+    }
+    public String toString () {
+        return "size: "+size;
     }
     
     public void handleInput(String input) {
@@ -31,6 +26,7 @@ public class Cave {
         }
         else if (input.trim().equalsIgnoreCase("down")) {
             caveman.moveDown();
+            
         }
         else if (input.trim().equalsIgnoreCase("left")) {
             caveman.moveLeft();
@@ -41,15 +37,7 @@ public class Cave {
         else if (input.trim().equalsIgnoreCase("close")) {
             System.exit(0);
         }
-        else {
-            System.out.println("(command not valid)");
-        }
-        
-        System.out.println(caveman.toString());
+        System.out.println("(invalid command)");
     }
-    
-    public String toString() {
-        return ""+size;
-    }
-    
+    System.out.println(caveman.toString());
 }
